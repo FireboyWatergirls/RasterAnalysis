@@ -2,8 +2,8 @@
 
 
 import os, sys
-from qgis.core import QgsProject, QgsApplication, QgsVectorLayer, QgsRasterLayer,QgsMapLayer
-from qgis.gui import QgsMapCanvas, QgsMapToolPan, QgsMapToolZoom, QgsMapToolIdentify
+from qgis.core import *
+from qgis.gui import *
 from PyQt5.QtCore import Qt, QFileInfo
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog
 from ui.mapView import Ui_MainWindow
@@ -48,24 +48,28 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.layer = QgsVectorLayer(fullpath, basename, "ogr")
             if not self.layer:
                 print("failed")
+            # 添加下拉框
         else:
             print('raster')
             #打开栅格图层
             self.layer = QgsRasterLayer(fullpath, basename,"gdal")
             if not self.layer:
                 print("failed")
+            # 添加下拉框
         # 注册图层
         QgsProject.instance().addMapLayer(self.layer)
-        self.mapCanvas.setLayers([self.layer])
+        layers=QgsProject.instance().mapLayers()
+        layerList=[]
+        for layer in layers.values():
+            print(layer)
+            layerList.append(layer)
+        print(self.layer)
+        print(layerList)
+        self.mapCanvas.setLayers(layerList)
         #设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
-
-        #layers = QgsProject.instance().mapLayers()
-        #print(layers)
-        #for layer in layers:
-            #print(layer.name())
-        #self.mmqgis_fill_combo_box_with_vector_layers(self.input_vector_layer)
+        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer,self.input_raster_layer)
 
     def action_open_triggered(self):
         fullpath, format = QFileDialog.getOpenFileName(self, '打开数据', '', '*.shp;;remote sensing image(*.tif *.tiff);;image(*.jpg *.jpeg *.png *.bmp)')
@@ -97,25 +101,22 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         y = point.y()
         self.statusbar.showMessage(f'经度:{x},纬度:{y}')
 
-    def mmqgis_fill_combo_box_with_vector_layers(self, combo_box):
+    def mmqgis_fill_combo_box_with_layers(self,combo_box_vector, combo_box_raster):
         # Add layers not in the combo box
-        print('0')
-        for layer in self.iface.mapCanvas().layers():
-            print('1')
+        for layer in self.mapCanvas.layers():
             if layer.type() == QgsMapLayer.VectorLayer:
-                print('2')
-                if combo_box.findText(layer.name()) < 0:
-                    print('3')
-                    combo_box.addItem(layer.name())
-                    if layer in self.iface.layerTreeView().selectedLayers():
-                        combo_box.setCurrentIndex(combo_box.count() - 1)
+                if combo_box_vector.findText(layer.name()) < 0:
+                    combo_box_vector.addItem(layer.name())
+                    #if layer in QgsLayerTreeView().selectedLayers():
+                        #combo_box.setCurrentIndex(combo_box.count() - 1)
 
         # Remove layers no longer on the map
         removed = []
-        for index in range(combo_box.count()):
+        for index in range(combo_box_vector.count()):
+            print("2")
             found = False
-            for layer in self.iface.mapCanvas().layers():
-                if layer.name() == combo_box.itemText(index):
+            for layer in self.mapCanvas.layers():
+                if layer.name() == combo_box_vector.itemText(index):
                     found = True
                     break
             if not found:
@@ -123,24 +124,23 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
         removed.reverse()
         for index in removed:
-            combo_box.removeItem(index)
+            combo_box_vector.removeItem(index)
 
-    def mmqgis_fill_combo_box_with_raster_layers(self, combo_box):
         # Add layers not in the combo box
-        for layer in self.iface.mapCanvas().layers():
+        for layer in self.mapCanvas.layers():
             if layer.type() == QgsMapLayer.RasterLayer:
-                if combo_box.findText(layer.name()) < 0:
-                    combo_box.addItem(layer.name())
-                    if layer in self.iface.layerTreeView().selectedLayers():
-                        print('4')
-                        combo_box.setCurrentIndex(combo_box.count() - 1)
+                if combo_box_raster.findText(layer.name()) < 0:
+                    combo_box_raster.addItem(layer.name())
+                    # if layer in QgsLayerTreeView().selectedLayers():
+                    # combo_box.setCurrentIndex(combo_box.count() - 1)
 
         # Remove layers no longer on the map
         removed = []
-        for index in range(combo_box.count()):
+        for index in range(combo_box_raster.count()):
+            print("2")
             found = False
-            for layer in self.iface.mapCanvas().layers():
-                if layer.name() == combo_box.itemText(index):
+            for layer in self.mapCanvas.layers():
+                if layer.name() == combo_box_raster.itemText(index):
                     found = True
                     break
             if not found:
@@ -148,7 +148,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
         removed.reverse()
         for index in removed:
-            combo_box.removeItem(index)
+            combo_box_raster.removeItem(index)
 
 
 
