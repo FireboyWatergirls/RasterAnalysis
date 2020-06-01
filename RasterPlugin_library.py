@@ -23,7 +23,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.actionzoom_out.triggered.connect(self.action_zoomout_triggered)
         self.actionpan.triggered.connect(self.action_pan_triggered)
         self.actionfull_extent.triggered.connect(self.action_fullextent_triggered)
+        self.actiondisplay_layers.triggered.connect(self.action_display_layers)
         self.actionsave.triggered.connect(self.action_save_triggered)
+        self.input_vector_layer.activated.connect(self.action_change_layer)
+        self.input_raster_layer.activated.connect(self.action_change_layer)
 
     def init_mapcanvas(self):
         #实例化地图画布
@@ -40,17 +43,13 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         info=QFileInfo(fullpath)
         basename=info.baseName()
         suffix=info.suffix()
-        print(basename)
-        print(suffix)
         if suffix == 'shp':
-            print('vector')
             # 打开矢量图层
             self.layer = QgsVectorLayer(fullpath, basename, "ogr")
             if not self.layer:
                 print("failed")
             # 添加下拉框
         else:
-            print('raster')
             #打开栅格图层
             self.layer = QgsRasterLayer(fullpath, basename,"gdal")
             if not self.layer:
@@ -61,10 +60,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         layers=QgsProject.instance().mapLayers()
         layerList=[]
         for layer in layers.values():
-            print(layer)
             layerList.append(layer)
-        print(self.layer)
-        print(layerList)
         self.mapCanvas.setLayers(layerList)
         #设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
@@ -95,6 +91,17 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
     def action_fullextent_triggered(self):
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
+
+    def action_display_layers(self):
+        layers = QgsProject.instance().mapLayers()
+        layerList = []
+        for layer in layers.values():
+            layerList.append(layer)
+        self.mapCanvas.setLayers(layerList)
+        # 设置图层范围
+        self.mapCanvas.setExtent(self.layer.extent())
+        self.mapCanvas.refresh()
+
     #显示鼠标点的经纬度信息
     def show_lonlat(self, point):
         x = point.x()
@@ -113,7 +120,6 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         # Remove layers no longer on the map
         removed = []
         for index in range(combo_box_vector.count()):
-            print("2")
             found = False
             for layer in self.mapCanvas.layers():
                 if layer.name() == combo_box_vector.itemText(index):
@@ -137,7 +143,6 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         # Remove layers no longer on the map
         removed = []
         for index in range(combo_box_raster.count()):
-            print("2")
             found = False
             for layer in self.mapCanvas.layers():
                 if layer.name() == combo_box_raster.itemText(index):
@@ -150,7 +155,22 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         for index in removed:
             combo_box_raster.removeItem(index)
 
+    def action_change_layer(self):
+        vector_layer=self.find_layer(self.input_vector_layer.currentText())
+        raster_layer = self.find_layer(self.input_raster_layer.currentText())
+        self.mapCanvas.setLayers([vector_layer,raster_layer])
+        self.mapCanvas.setExtent(self.layer.extent())
+        self.mapCanvas.refresh()
 
+    def find_layer(self, layer_name):
+        if not layer_name:
+            return None
+
+        layers = QgsProject.instance().mapLayersByName(layer_name)
+        if (len(layers) >= 1):
+            return layers[0]
+
+        return None
 
 def main():
     qgs = QgsApplication([], True)
