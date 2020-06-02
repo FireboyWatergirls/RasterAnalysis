@@ -4,9 +4,10 @@
 import os, sys
 from qgis.core import *
 from qgis.gui import *
-from PyQt5.QtCore import Qt, QFileInfo
+from PyQt5.QtCore import *
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog
 from ui.mapView import Ui_MainWindow
+from RasterPlugin_webLayer import *
 
 
 class MapExplorer(QMainWindow, Ui_MainWindow):
@@ -25,8 +26,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.actionfull_extent.triggered.connect(self.action_fullextent_triggered)
         self.actiondisplay_layers.triggered.connect(self.action_display_layers)
         self.actionsave.triggered.connect(self.action_save_triggered)
-        self.input_vector_layer.activated.connect(self.action_change_layer)
-        self.input_raster_layer.activated.connect(self.action_change_layer)
+        self.input_vector_layer.activated.connect(lambda :self.action_change_layer(1))
+        self.input_raster_layer.activated.connect(lambda :self.action_change_layer(0))
+        self.WFS.clicked.connect(self.open_WFS_dialog)
+        self.WMS.clicked.connect(self.open_WMS_dialog)
 
     def init_mapcanvas(self):
         #实例化地图画布
@@ -155,9 +158,18 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         for index in removed:
             combo_box_raster.removeItem(index)
 
-    def action_change_layer(self):
+        if self.layer.type() == QgsMapLayer.RasterLayer:
+            combo_box_raster.setCurrentText(self.layer.name())
+        else:
+            combo_box_vector.setCurrentText(self.layer.name())
+
+    def action_change_layer(self,flag):
         vector_layer=self.find_layer(self.input_vector_layer.currentText())
         raster_layer = self.find_layer(self.input_raster_layer.currentText())
+        if flag == 1:
+            self.layer=vector_layer
+        else:
+            self.layer=raster_layer
         self.mapCanvas.setLayers([vector_layer,raster_layer])
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
@@ -167,10 +179,48 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             return None
 
         layers = QgsProject.instance().mapLayersByName(layer_name)
+        print(layers)
         if (len(layers) >= 1):
             return layers[0]
 
         return None
+
+    def open_WFS_dialog(self):
+        self.WFSdialog = wfsLayer()
+        self.WFSdialog.show()
+        self.WFSdialog.wfsLayerSignal.connect(self.add_WFS_layer)
+
+    def add_WFS_layer(self,wfsLayer):
+        self.layer=wfsLayer
+        QgsProject.instance().addMapLayer(self.layer)
+        layers = QgsProject.instance().mapLayers()
+        layerList = []
+        for layer in layers.values():
+            layerList.append(layer)
+        self.mapCanvas.setLayers(layerList)
+        # 设置图层范围
+        self.mapCanvas.setExtent(self.layer.extent())
+        self.mapCanvas.refresh()
+        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+
+    def open_WMS_dialog(self):
+        self.WMSdialog = xyzTileLayer()
+        self.WMSdialog.show()
+        self.WMSdialog.xyzLayerSignal.connect(self.add_WMS_layer)
+
+    def add_WMS_layer(self,wmsLayer):
+        self.layer=wmsLayer
+        QgsProject.instance().addMapLayer(self.layer)
+        layers = QgsProject.instance().mapLayers()
+        layerList = []
+        for layer in layers.values():
+            layerList.append(layer)
+        self.mapCanvas.setLayers(layerList)
+        # 设置图层范围
+        self.mapCanvas.setExtent(self.layer.extent())
+        self.mapCanvas.refresh()
+        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+
 
 def main():
     qgs = QgsApplication([], True)
