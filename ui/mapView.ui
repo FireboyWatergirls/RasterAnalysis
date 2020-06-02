@@ -161,7 +161,7 @@
      <string>计算坡度</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="WFS">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -174,7 +174,7 @@
      <string>WFS</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="WMS">
     <property name="geometry">
      <rect>
       <x>670</x>
