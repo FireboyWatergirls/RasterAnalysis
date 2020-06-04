@@ -5,109 +5,19 @@ import os, sys,struct
 from qgis.core import *
 from qgis.gui import *
 from PyQt5.QtCore import *
+from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog,QMessageBox
 from ui.mapView import Ui_MainWindow
 from ui.resultView2 import Ui_MainWindow as resultView
 #from ui.resultView import Ui_Dialog
 from osgeo import gdal
 from RasterPlugin_webLayer import *
+from RasterPlugin_showNDVI import *
 
 #w问题：如果有多个图层，是只显示选项框里的图层还是全部显示？
 ##扩展部分
 ##1 栅格运算：添加计算器
 ##2 弹出窗口显示结果
-
-class ResultWindow(QMainWindow,resultView):
-    def __init__(self,pt):
-        super(ResultWindow, self).__init__()
-        self.setupUi(self)
-        self.init_mapcanvas()
-        my_path = os.path.dirname(__file__)
-        print(my_path)
-        print(pt)
-        self.fullpath=pt.strip('./')
-        full=os.path.join(my_path,self.fullpath)
-        self.fullpath=full
-        print(self.fullpath)
-        if os.path.exists(self.fullpath):
-            self.loadMap()
-        else: print("error reading file")
-        self.slot_connect()
-
-    def init_mapcanvas(self):
-        #实例化地图画布
-        self.mapCanvas = QgsMapCanvas()
-        self.mapCanvas.xyCoordinates.connect(self.show_lonlat)
-        self.mapCanvas.setCanvasColor(Qt.white)
-        # self.mapCanvas.show()
-        layout = QVBoxLayout(self.mapWidget)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.addWidget(self.mapCanvas)
-
-    def loadMap(self):
-        print(self.fullpath)
-        info = QFileInfo(self.fullpath)
-        basename = info.baseName()
-        suffix = info.suffix()
-        print(basename)
-        print(suffix)
-        if suffix == 'shp':
-            print('vector')
-            # 打开矢量图层
-            self.layer = QgsVectorLayer(self.fullpath, basename, "ogr")
-            if not self.layer:
-                print("failed")
-            # 添加下拉框
-        else:
-            print('raster')
-            # 打开栅格图层
-            self.layer = QgsRasterLayer(self.fullpath, basename, "gdal")
-            if not self.layer:
-                print("failed")
-            # 添加下拉框
-        # 注册图层
-        QgsProject.instance().addMapLayer(self.layer)
-        layers = QgsProject.instance().mapLayers()
-        layerList = []
-        for layer in layers.values():
-            print(layer)
-            layerList.append(layer)
-        print(self.layer)
-        print(layerList)
-        self.mapCanvas.setLayers(layerList)
-        # 设置图层范围
-        self.mapCanvas.setExtent(self.layer.extent())
-        self.mapCanvas.refresh()
-        #self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
-
-    def slot_connect(self):
-        self.actionzoom_in.clicked.connect(self.action_zoomin_triggered)
-        self.actionzoom_out.clicked.connect(self.action_zoomout_triggered)
-        self.actionpan.clicked.connect(self.action_pan_triggered)
-        self.actionfull_extent.clicked.connect(self.action_fullextent_triggered)
-
-    def action_zoomin_triggered(self):
-        self.maptool = QgsMapToolZoom(self.mapCanvas, False)
-        self.mapCanvas.setMapTool(self.maptool)
-
-    def action_zoomout_triggered(self):
-        self.maptool = QgsMapToolZoom(self.mapCanvas, True)
-        self.mapCanvas.setMapTool(self.maptool)
-
-    def action_pan_triggered(self):
-        self.maptool = QgsMapToolPan(self.mapCanvas)
-        self.mapCanvas.setMapTool(self.maptool)
-
-    def action_fullextent_triggered(self):
-        self.mapCanvas.setExtent(self.layer.extent())
-        self.mapCanvas.refresh()
-    #显示鼠标点的经纬度信息
-    def show_lonlat(self, point):
-        x = point.x()
-        y = point.y()
-        self.statusbar.showMessage('经度:{x},纬度:{y}')
-
-
 
 class MapExplorer(QMainWindow, Ui_MainWindow):
 
@@ -155,6 +65,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def action_count_ndvi_triggered(self):
         #the function runs a counter thread ( a separate thread)
+        print("ndvi")
         self.progressBar.setValue(0)
         #countChanged = pyqtSignal(int)
         #countChanged.connect(self.onCountChanged)
@@ -296,6 +207,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             if not self.layer:
                 print("failed")
             # 添加下拉框
+            self.fill_combo_box_band()
         # 注册图层
         QgsProject.instance().addMapLayer(self.layer)
         layers=QgsProject.instance().mapLayers()
@@ -306,14 +218,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         #设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
-        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer,self.input_raster_layer)
-        curLayer = self.input_raster_layer.currentText()
-        layer = QgsProject.instance().mapLayersByName(curLayer)[0]
-        self.rasterDataset = gdal.Open(layer.dataProvider().dataSourceUri())
-        # 添加可选择波段
-        for i in range(self.rasterDataset.RasterCount):
-            self.comboBox_R.addItem(str(i+1))
-            self.comboBox_NIR.addItem(str(i+1))
+        self.fill_combo_box_with_layers(self.input_vector_layer,self.input_raster_layer)
+        #curLayer = self.input_raster_layer.currentText()
+        #layer = QgsProject.instance().mapLayersByName(curLayer)[0]
+
 
     def action_open_triggered(self):
         fullpath, format = QFileDialog.getOpenFileName(self, '打开数据', '', '*.shp;;remote sensing image(*.tif *.tiff);;image(*.jpg *.jpeg *.png *.bmp)')
@@ -356,7 +264,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         y = point.y()
         self.statusbar.showMessage(f'经度:{x},纬度:{y}')
 
-    def mmqgis_fill_combo_box_with_layers(self,combo_box_vector, combo_box_raster):
+    def fill_combo_box_with_layers(self,combo_box_vector, combo_box_raster):
         # Add layers not in the combo box
         for layer in self.mapCanvas.layers():
             if layer.type() == QgsMapLayer.VectorLayer:
@@ -409,6 +317,15 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         else:
             combo_box_vector.setCurrentText(self.layer.name())
 
+    def fill_combo_box_band(self):
+        self.rasterDataset = gdal.Open(self.layer.dataProvider().dataSourceUri())
+        # 添加可选择波段
+        self.comboBox_R.clear()
+        self.comboBox_NIR.clear()
+        for i in range(self.rasterDataset.RasterCount):
+            self.comboBox_R.addItem(str(i + 1))
+            self.comboBox_NIR.addItem(str(i + 1))
+
     def action_change_layer(self,flag):
         vector_layer=self.find_layer(self.input_vector_layer.currentText())
         raster_layer = self.find_layer(self.input_raster_layer.currentText())
@@ -416,6 +333,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.layer=vector_layer
         else:
             self.layer=raster_layer
+            #更新NDVI下拉框
+            self.fill_combo_box_band()
         self.mapCanvas.setLayers([vector_layer,raster_layer])
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
@@ -447,7 +366,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         # 设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
-        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+        self.fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
 
     def open_WMS_dialog(self):
         self.WMSdialog = xyzTileLayer()
@@ -465,7 +384,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         # 设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
-        self.mmqgis_fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+        self.fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
 
 
 def main():
