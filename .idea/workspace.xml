@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b53e8385-b614-4dcc-a39d-d8b100692d07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +82,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

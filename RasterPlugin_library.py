@@ -22,11 +22,11 @@ class ResultWindow(QMainWindow,resultView):
         self.setupUi(self)
         self.init_mapcanvas()
         my_path = os.path.dirname(__file__)
+        print(my_path)
         print(pt)
         self.fullpath=pt.strip('./')
         full=os.path.join(my_path,self.fullpath)
         self.fullpath=full
-        self.fullpath="D:/collegeThings/2017-2018/QGIS/RasterPlugin-master (1)/RasterPlugin-master/ndvi.tif"
         print(self.fullpath)
         if os.path.exists(self.fullpath):
             self.loadMap()
