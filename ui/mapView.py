@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'mapView.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -59,15 +61,15 @@ class Ui_MainWindow(object):
         self.pushButton_5.setGeometry(QtCore.QRect(492, 330, 101, 23))
         self.pushButton_5.setObjectName("pushButton_5")
         self.WFS = QtWidgets.QPushButton(self.centralwidget)
-        self.WFS.setGeometry(QtCore.QRect(550, 400, 101, 23))
+        self.WFS.setGeometry(QtCore.QRect(432, 400, 101, 23))
         self.WFS.setObjectName("WFS")
         self.WMS = QtWidgets.QPushButton(self.centralwidget)
-        self.WMS.setGeometry(QtCore.QRect(670, 400, 101, 23))
+        self.WMS.setGeometry(QtCore.QRect(552, 400, 101, 23))
         self.WMS.setObjectName("WMS")
-        self.status = QtWidgets.QProgressBar(self.centralwidget)
-        self.status.setGeometry(QtCore.QRect(40, 610, 462, 20))
-        self.status.setProperty("value", 24)
-        self.status.setObjectName("status")
+        self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
+        self.progressBar.setGeometry(QtCore.QRect(-10, 480, 462, 20))
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName("progressBar")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(492, 100, 101, 21))
         self.label_7.setObjectName("label_7")
@@ -212,4 +214,3 @@ class Ui_MainWindow(object):
         self.actionj.setText(_translate("MainWindow", "j"))
         self.action.setText(_translate("MainWindow", "display all"))
         self.actiondisplay_layers.setText(_translate("MainWindow", "display layers"))
-

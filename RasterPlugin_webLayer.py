@@ -54,17 +54,23 @@ class xyzTileLayer(QDialog, Ui_XYZ_Dialog):
         x=self.Xvalue.text()
         y=self.Yvalue.text()
         z=self.Zvalue.text()
+        zmin=self.zmin.text()
+        zmax=self.zmax.text()
         params = {
             'lyrs': lyrs,
             'x': x,
             'y': y,
             'z': z
         }
+        params2 = {
+            'zmin': zmin,
+            'zmax': zmax
+        }
         url = URI + urllib.parse.unquote(urllib.parse.urlencode(params))
-        print(url)
-        uri="type=xyz&url=https://"+urllib.parse.quote(url)
+        zparam = urllib.parse.unquote(urllib.parse.urlencode(params2))
+        uri="type=xyz&"+zparam+"&url=https://"+urllib.parse.quote(url)
         print(uri)
         layer = QgsRasterLayer(uri,"wms layer","wms")
-        print(layer)
-        self.xyzLayerSignal.emit(layer)
+        if layer.isValid():
+            self.xyzLayerSignal.emit(layer)
         self.close()
