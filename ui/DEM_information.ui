@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>20</y>
+     <y>50</y>
      <width>41</width>
      <height>9</height>
     </rect>
@@ -26,24 +26,11 @@
     <string>名称</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>120</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>高程直方图</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>90</y>
+     <y>130</y>
      <width>41</width>
      <height>9</height>
     </rect>
@@ -56,7 +43,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>90</y>
+     <y>130</y>
      <width>41</width>
      <height>9</height>
     </rect>
@@ -69,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>60</y>
+     <y>90</y>
      <width>41</width>
      <height>9</height>
     </rect>
@@ -81,9 +68,9 @@
   <widget class="QTextBrowser" name="textName">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>10</y>
-     <width>331</width>
+     <x>90</x>
+     <y>40</y>
+     <width>321</width>
      <height>21</height>
     </rect>
    </property>
@@ -91,9 +78,9 @@
   <widget class="QTextBrowser" name="textExtent">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>50</y>
-     <width>331</width>
+     <x>90</x>
+     <y>80</y>
+     <width>321</width>
      <height>21</height>
     </rect>
    </property>
@@ -101,8 +88,8 @@
   <widget class="QTextBrowser" name="textWidth">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>80</y>
+     <x>90</x>
+     <y>120</y>
      <width>101</width>
      <height>21</height>
     </rect>
@@ -112,19 +99,101 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>80</y>
+     <y>120</y>
      <width>101</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>150</y>
-     <width>421</width>
-     <height>221</height>
+     <y>170</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>高程最大值</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textMax">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>170</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textMin">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>170</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>170</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>高程最大值</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>栅格类型</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>270</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>波段个数</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textType">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>220</y>
+     <width>321</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBandNum">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>270</y>
+     <width>321</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

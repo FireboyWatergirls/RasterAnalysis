@@ -164,13 +164,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             combo_box_raster.removeItem(index)
 
     def action_show_information(self):
-        self.dem_dialog = DEMInformation()
-        self.dem_dialog.textName.setText(self.basename)
-        self.dem_dialog.textWidth.setText(str(self.layer.width()))
-        self.dem_dialog.textHeight.setText(str(self.layer.height()))
-        self.dem_dialog.textExtent.setText(self.layer.extent().toString())
-        self.dem_dialog.show()
-
+        # 绘制高程直方图
         p = self.layer.dataProvider()
         p.initHistogram(QgsRasterHistogram(), 1, 100)
         h = p.histogram(1)
@@ -180,7 +174,31 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         index = numpy.arange(h.minimum, h.maximum + 1, 1)
         print(len(index))
         plt.bar(index, array)
+        plt.title('Histogram')
         plt.show()
+
+        # 获取栅格类型
+        def switch_case(value):
+            switcher = {
+                0: "灰度值（单波段）",
+                1: "调色板（单波段）",
+                2: "多波段",
+                3: "网格"
+            }
+            return switcher.get(value, 'wrong value')
+        rasterType = switch_case(self.layer.rasterType())
+
+        # 传值给基本信息窗口
+        self.dem_dialog = DEMInformation()
+        self.dem_dialog.textName.setText(self.basename)
+        self.dem_dialog.textWidth.setText(str(self.layer.width()))
+        self.dem_dialog.textHeight.setText(str(self.layer.height()))
+        self.dem_dialog.textExtent.setText(self.layer.extent().toString())
+        self.dem_dialog.textMax.setText(str(h.maximum))
+        self.dem_dialog.textMin.setText(str(h.minimum))
+        self.dem_dialog.textBandNum.setText(str(self.layer.bandCount()))
+        self.dem_dialog.textType.setText(rasterType)
+        self.dem_dialog.show()
 
     def action_render_dem(self):
         p = self.layer.dataProvider()
