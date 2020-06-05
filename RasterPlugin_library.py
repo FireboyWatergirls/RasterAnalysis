@@ -13,6 +13,7 @@ from ui.resultView2 import Ui_MainWindow as resultView
 from osgeo import gdal
 from RasterPlugin_webLayer import *
 from RasterPlugin_showNDVI import *
+from RasterPlugin_RasterData import *
 
 #w问题：如果有多个图层，是只显示选项框里的图层还是全部显示？
 ##扩展部分
@@ -41,6 +42,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.input_raster_layer.activated.connect(lambda :self.action_change_layer(0))
         self.WFS.clicked.connect(self.open_WFS_dialog)
         self.WMS.clicked.connect(self.open_WMS_dialog)
+        self.pushButton.clicked.connect(self.RasterData)
 
     def onCountChanged(self, value):
         self.progressBar.setValue(value)
@@ -386,6 +388,25 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.mapCanvas.refresh()
         self.fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
 
+    def RasterData(self):
+        self.progressBar.setValue(0)
+        layer = self.find_layer(self.input_raster_layer.currentText())
+        out = raster_stat_unique_count(layer)
+        print()
+        value = []
+        count = []
+        for i in range(1, 20):
+            self.progressBar.setValue(i)
+        for k in sorted(out.keys()):
+            # print("value = ", k, '\t, count = ', out[k])
+            if (k<1000):
+                value.append(k)
+                count.append(out[k])
+        for i in range(21, 60):
+            self.progressBar.setValue(i)
+        histogram_draw(value, count)
+        for i in range(61,101):
+            self.progressBar.setValue(i)
 
 def main():
     qgs = QgsApplication([], True)
