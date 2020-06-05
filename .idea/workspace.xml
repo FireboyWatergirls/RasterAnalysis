@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ab8c4fa-889b-4498-bda8-9a7695c2e978" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RasterPlugin_webLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_webLayer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ndvi.tif" beforeDir="false" afterPath="$PROJECT_DIR$/ndvi.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/XYZTile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/XYZTile.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/XYZTile.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
