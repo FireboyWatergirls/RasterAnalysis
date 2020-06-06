@@ -26,6 +26,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.init_mapcanvas()
+        self.init_rasterType()
         self.slot_connect()
     #信号和槽的连接
     def slot_connect(self):
@@ -35,9 +36,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.actionpan.triggered.connect(self.action_pan_triggered)
         self.actionfull_extent.triggered.connect(self.action_fullextent_triggered)
         self.actionsave.triggered.connect(self.action_save_triggered)
-        self.pushButton_8.clicked.connect(self.action_show_information)
-        self.pushButton_9.clicked.connect(self.action_render_dem)
-        self.pushButton_5.clicked.connect(self.action_cal_slope)
+        self.pushButtonInfor.clicked.connect(self.action_show_information)
+        self.pushButtonHis.clicked.connect(self.action_show_histogram)
+        self.demRenderType.currentIndexChanged.connect(self.action_change_render_type)
+        self.pushButtonRender.clicked.connect(self.action_render_dem)
 
     def init_mapcanvas(self):
         #实例化地图画布
@@ -48,6 +50,9 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         layout = QVBoxLayout(self.mapWidget)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.mapCanvas)
+
+    def init_rasterType(self):
+        self.demRenderType.addItems(["Singleband gray", "Singleband pseudocolor", "Hillshade"])
 
     def loadMap(self, fullpath):
         print(fullpath)
@@ -164,18 +169,9 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             combo_box_raster.removeItem(index)
 
     def action_show_information(self):
-        # 绘制高程直方图
         p = self.layer.dataProvider()
         p.initHistogram(QgsRasterHistogram(), 1, 100)
         h = p.histogram(1)
-        print('最大值，最小值', h.maximum, h.minimum)
-        array = h.histogramVector
-        print(len(array))
-        index = numpy.arange(h.minimum, h.maximum + 1, 1)
-        print(len(index))
-        plt.bar(index, array)
-        plt.title('Histogram')
-        plt.show()
 
         # 获取栅格类型
         def switch_case(value):
@@ -200,7 +196,20 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.dem_dialog.textType.setText(rasterType)
         self.dem_dialog.show()
 
-    def action_render_dem(self):
+    def action_show_histogram(self):
+        # 绘制高程直方图
+        p = self.layer.dataProvider()
+        p.initHistogram(QgsRasterHistogram(), 1, 100)
+        h = p.histogram(1)
+        array = h.histogramVector
+        print(len(array))
+        index = numpy.arange(h.minimum, h.maximum + 1, 1)
+        print(len(index))
+        plt.bar(index, array)
+        plt.title('Histogram')
+        plt.show()
+
+    def action_render_type(self):
         p = self.layer.dataProvider()
         p.initHistogram(QgsRasterHistogram(), 1, 100)
         h = p.histogram(1)
@@ -208,24 +217,53 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         minh = h.minimum
 
         input_layer = self.layer
-        fcn = QgsColorRampShader()
-        fcn.setColorRampType(QgsColorRampShader.Interpolated)
-        lst = [QgsColorRampShader.ColorRampItem(minh, QColor(0, 255, 0)),
-               QgsColorRampShader.ColorRampItem(maxh, QColor(255, 255, 0))]
-        fcn.setColorRampItemList(lst)
-        shader = QgsRasterShader()
-        shader.setRasterShaderFunction(fcn)
-        renderer = QgsSingleBandPseudoColorRenderer(input_layer.dataProvider(), 1, shader)
-        input_layer.setRenderer(renderer)
-        input_layer.triggerRepaint()
+        # fcn = QgsColorRampShader()
+        # fcn.setColorRampType(QgsColorRampShader.Interpolated)
+        # lst = [QgsColorRampShader.ColorRampItem(minh, QColor(0, 255, 0)),
+        #        QgsColorRampShader.ColorRampItem(maxh, QColor(255, 255, 0))]
+        # fcn.setColorRampItemList(lst)
+        # shader = QgsRasterShader()
+        # shader.setRasterShaderFunction(fcn)
+        # renderer = QgsSingleBandPseudoColorRenderer(input_layer.dataProvider(), 1, shader)
+        # input_layer.setRenderer(renderer)
+        # input_layer.triggerRepaint()
 
         self.single_band_pseudo_color_renderer_widget = QgsSingleBandPseudoColorRendererWidget(
             input_layer
         )
         self.single_band_pseudo_color_renderer_widget.show()
 
-    def action_cal_slope(self):
-        print("cal_slope")
+    def action_change_render_type(self, index):
+        currentIndex = self.demRenderType.currentIndex()
+        self.single_band_gray_renderer_widget = QgsSingleBandGrayRendererWidget(self.layer)
+        self.single_band_pseudo_color_renderer_widget = QgsSingleBandPseudoColorRendererWidget(self.layer)
+        self.hillshade_renderer_widget = QgsHillshadeRendererWidget(self.layer)
+        if currentIndex == 0:
+            self.single_band_gray_renderer_widget.setVisible(True)
+            self.single_band_pseudo_color_renderer_widget.setVisible(False)
+            self.hillshade_renderer_widget.setVisible(False)
+        elif currentIndex == 1:
+            self.single_band_gray_renderer_widget.setVisible(False)
+            self.single_band_pseudo_color_renderer_widget.setVisible(True)
+            self.hillshade_renderer_widget.setVisible(False)
+        elif currentIndex == 2:
+            self.single_band_gray_renderer_widget.setVisible(False)
+            self.single_band_pseudo_color_renderer_widget.setVisible(False)
+            self.hillshade_renderer_widget.setVisible(True)
+
+    def action_render_dem(self):
+        currentIndex = self.demRenderType.currentIndex()
+        if currentIndex == 0:
+            self.render = self.single_band_gray_renderer_widget.renderer()
+        elif currentIndex == 1:
+            self.render = self.single_band_pseudo_color_renderer_widget.renderer()
+        elif currentIndex == 2:
+            self.render = self.hillshade_renderer_widget.renderer()
+        else:
+            self.render = self.single_band_gray_renderer_widget.renderer()
+        self.layer.setRenderer(self.render)
+        self.layer.triggerRepaint()
+
 def main():
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     qgs = QgsApplication([], True)
