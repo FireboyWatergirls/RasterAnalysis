@@ -148,7 +148,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="pushButtonRender">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -158,7 +158,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>计算坡度</string>
+     <string>渲染</string>
     </property>
    </widget>
    <widget class="QPushButton" name="WFS">
@@ -389,6 +389,68 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonInfor">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>330</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>基本信息</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="demRenderType">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>370</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>369</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DEM 渲染</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonHis">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>330</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>高程直方图</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>330</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>数据预览</string>
+    </property>
+   </widget>
    <widget class="QComboBox" name="comboBox_R">
     <property name="geometry">
      <rect>
@@ -484,6 +546,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
+     <width>802</width>
+     <height>18</height>
      <width>1012</width>
      <height>23</height>
     </rect>
