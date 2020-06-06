@@ -42,7 +42,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.input_raster_layer.activated.connect(lambda :self.action_change_layer(0))
         self.WFS.clicked.connect(self.open_WFS_dialog)
         self.WMS.clicked.connect(self.open_WMS_dialog)
-        self.pushButton.clicked.connect(self.RasterData)
+        self.ImageData.clicked.connect(self.RasterData)
 
     def onCountChanged(self, value):
         self.progressBar.setValue(value)
@@ -358,17 +358,25 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.WFSdialog.wfsLayerSignal.connect(self.add_WFS_layer)
 
     def add_WFS_layer(self,wfsLayer):
+        self.progressBar.setValue(0)
         self.layer=wfsLayer
         QgsProject.instance().addMapLayer(self.layer)
         layers = QgsProject.instance().mapLayers()
         layerList = []
+        for i in range(1, 20):
+            self.progressBar.setValue(i)
         for layer in layers.values():
             layerList.append(layer)
         self.mapCanvas.setLayers(layerList)
         # 设置图层范围
+        for i in range(61, 80):
+            self.progressBar.setValue(i)
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
         self.fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+        for i in range(81, 101):
+            self.progressBar.setValue(i)
+
 
     def open_WMS_dialog(self):
         self.WMSdialog = xyzTileLayer()
@@ -376,17 +384,24 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.WMSdialog.xyzLayerSignal.connect(self.add_WMS_layer)
 
     def add_WMS_layer(self,wmsLayer):
+        self.progressBar.setValue(0)
         self.layer=wmsLayer
         QgsProject.instance().addMapLayer(self.layer)
         layers = QgsProject.instance().mapLayers()
         layerList = []
+        for i in range(1, 20):
+            self.progressBar.setValue(i)
         for layer in layers.values():
             layerList.append(layer)
         self.mapCanvas.setLayers(layerList)
+        for i in range(21, 60):
+                self.progressBar.setValue(i)
         # 设置图层范围
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
         self.fill_combo_box_with_layers(self.input_vector_layer, self.input_raster_layer)
+        for i in range(61, 101):
+            self.progressBar.setValue(i)
 
     def RasterData(self):
         self.progressBar.setValue(0)
