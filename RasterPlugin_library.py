@@ -263,8 +263,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         print(self.img.RasterYSize)
         self.status.setMaximum(100)
 
-        print(self.comboBox.currentText())
-        if self.comboBox.currentText() == "全波段":
+        print(self.selectClusterBand.currentText())
+        if self.selectClusterBand.currentText() == "全波段":
             self.tmpimg = np.zeros((self.img.RasterYSize, self.img.RasterXSize, self.img.RasterCount),
                                    gdal_array.GDALTypeCodeToNumericTypeCode(self.img.GetRasterBand(1).DataType))
             j = 0
@@ -286,7 +286,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             #     j = j + 1
             x_cluster = k_means.labels_
             x_cluster = x_cluster.reshape(self.tmpimg[:, :, 0].shape)
-        elif self.comboBox.currentText() == "波段1":
+        elif self.selectClusterBand.currentText() == "波段1":
             band = self.img.GetRasterBand(1)
             self.tmpimg = band.ReadAsArray()
             x = self.tmpimg.reshape((-1, 1))
@@ -302,7 +302,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             x_cluster = k_means.labels_
             self.status.setValue(96)
             x_cluster = x_cluster.reshape(self.tmpimg.shape)
-        elif self.comboBox.currentText() == "波段2":
+        elif self.selectClusterBand.currentText() == "波段2":
             band = self.img.GetRasterBand(2)
             self.tmpimg = band.ReadAsArray()
             self.status.setValue(77)

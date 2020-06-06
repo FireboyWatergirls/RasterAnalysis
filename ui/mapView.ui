@@ -412,7 +412,7 @@
      <string>选择聚类波段：</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="selectClusterBand">
     <property name="geometry">
      <rect>
       <x>660</x>
