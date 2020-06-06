@@ -24,7 +24,6 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MapExplorer, self).__init__()
         self.setupUi(self)
-
         self.init_mapcanvas()
         self.init_rasterType()
         self.slot_connect()
@@ -169,6 +168,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             combo_box_raster.removeItem(index)
 
     def action_show_information(self):
+        self.status.setValue(0)
+        self.status.setMaximum(1)
         p = self.layer.dataProvider()
         p.initHistogram(QgsRasterHistogram(), 1, 100)
         h = p.histogram(1)
@@ -195,43 +196,22 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.dem_dialog.textBandNum.setText(str(self.layer.bandCount()))
         self.dem_dialog.textType.setText(rasterType)
         self.dem_dialog.show()
+        self.status.setValue(1)
 
     def action_show_histogram(self):
+        self.status.setValue(0)
+        self.status.setMaximum(2)
         # 绘制高程直方图
         p = self.layer.dataProvider()
         p.initHistogram(QgsRasterHistogram(), 1, 100)
         h = p.histogram(1)
         array = h.histogramVector
-        print(len(array))
         index = numpy.arange(h.minimum, h.maximum + 1, 1)
-        print(len(index))
+        self.status.setValue(1)
         plt.bar(index, array)
         plt.title('Histogram')
         plt.show()
-
-    def action_render_type(self):
-        p = self.layer.dataProvider()
-        p.initHistogram(QgsRasterHistogram(), 1, 100)
-        h = p.histogram(1)
-        maxh = h.maximum
-        minh = h.minimum
-
-        input_layer = self.layer
-        # fcn = QgsColorRampShader()
-        # fcn.setColorRampType(QgsColorRampShader.Interpolated)
-        # lst = [QgsColorRampShader.ColorRampItem(minh, QColor(0, 255, 0)),
-        #        QgsColorRampShader.ColorRampItem(maxh, QColor(255, 255, 0))]
-        # fcn.setColorRampItemList(lst)
-        # shader = QgsRasterShader()
-        # shader.setRasterShaderFunction(fcn)
-        # renderer = QgsSingleBandPseudoColorRenderer(input_layer.dataProvider(), 1, shader)
-        # input_layer.setRenderer(renderer)
-        # input_layer.triggerRepaint()
-
-        self.single_band_pseudo_color_renderer_widget = QgsSingleBandPseudoColorRendererWidget(
-            input_layer
-        )
-        self.single_band_pseudo_color_renderer_widget.show()
+        self.status.setValue(2)
 
     def action_change_render_type(self, index):
         currentIndex = self.demRenderType.currentIndex()
@@ -252,6 +232,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.hillshade_renderer_widget.setVisible(True)
 
     def action_render_dem(self):
+        self.status.setValue(0)
+        self.status.setMaximum(1)
         currentIndex = self.demRenderType.currentIndex()
         if currentIndex == 0:
             self.render = self.single_band_gray_renderer_widget.renderer()
@@ -263,6 +245,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.render = self.single_band_gray_renderer_widget.renderer()
         self.layer.setRenderer(self.render)
         self.layer.triggerRepaint()
+        self.status.setValue(1)
 
 def main():
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
