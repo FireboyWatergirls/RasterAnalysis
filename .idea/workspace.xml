@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="228e69a6-dffe-438a-b331-dfd4826cd0bf" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -10,6 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" />
+>>>>>>> correlation
       <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
