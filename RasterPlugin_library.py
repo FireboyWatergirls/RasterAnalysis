@@ -5,8 +5,8 @@ import os, sys,struct
 from qgis.core import *
 from qgis.gui import *
 from PyQt5.QtCore import *
-from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog,QMessageBox
+from PyQt5.QtGui import QColor
 from ui.mapView import Ui_MainWindow
 from ui.resultView2 import Ui_MainWindow as resultView
 #from ui.resultView import Ui_Dialog
@@ -26,6 +26,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.init_mapcanvas()
         self.slot_connect()
+
+    def readQss(style):
+        with open(style, 'r') as f:
+            return f.read()
 
     #信号和槽的连接
     def slot_connect(self):
@@ -394,6 +398,9 @@ def main():
     qgs.initQgis()
 
     window = MapExplorer()
+    styleFile = './qss/Ubuntu.qss'
+    qssStyle = MapExplorer.readQss(styleFile)
+    window.setStyleSheet(qssStyle)
     window.show()
 
     exit_code = qgs.exec_()
