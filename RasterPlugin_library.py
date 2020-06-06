@@ -19,6 +19,17 @@ from RasterPlugin_showNDVI import *
 ##1 栅格运算：添加计算器
 ##2 弹出窗口显示结果
 
+
+# 主题的类
+class StyleFile:
+    def __init__(self):
+        pass
+
+    # @staticmethod
+    def readQSS(style):
+        with open(style, 'r') as f:
+            return f.read()
+
 class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
@@ -26,10 +37,6 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.init_mapcanvas()
         self.slot_connect()
-
-    def readQss(style):
-        with open(style, 'r') as f:
-            return f.read()
 
     #信号和槽的连接
     def slot_connect(self):
@@ -45,6 +52,48 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.input_raster_layer.activated.connect(lambda :self.action_change_layer(0))
         self.WFS.clicked.connect(self.open_WFS_dialog)
         self.WMS.clicked.connect(self.open_WMS_dialog)
+        self.actionAMOLED.triggered.connect(self.action_change_style_amoled)
+        self.actionAqua.triggered.connect(self.action_change_style_aqua)
+        self.actionConsoleStyle.triggered.connect(self.action_change_style_console)
+        self.actionElegantDark.triggered.connect(self.action_change_style_elegant)
+        self.actionManjaroMix.triggered.connect(self.action_change_style_mix)
+        self.actionMaterialDark.triggered.connect(self.action_change_style_dark)
+        self.actionUbuntu.triggered.connect(self.action_change_style_ubuntu)
+
+    def action_change_style_amoled(self):
+        style_file = 'qss/AMOLED.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_aqua(self):
+        style_file = 'qss/Aqua.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_console(self):
+        style_file = 'qss/ConsoleStyle.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_elegant(self):
+        style_file = 'qss/ElegantDark.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_mix(self):
+        style_file = 'qss/ManjaroMix.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_dark(self):
+        style_file = 'qss/MaterialDark.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_ubuntu(self):
+        style_file = 'qss/Ubuntu.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
 
     def onCountChanged(self, value):
         self.progressBar.setValue(value)
@@ -226,7 +275,6 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         #curLayer = self.input_raster_layer.currentText()
         #layer = QgsProject.instance().mapLayersByName(curLayer)[0]
 
-
     def action_open_triggered(self):
         fullpath, format = QFileDialog.getOpenFileName(self, '打开数据', '', '*.shp;;remote sensing image(*.tif *.tiff);;image(*.jpg *.jpeg *.png *.bmp)')
         if os.path.exists(fullpath):
@@ -398,9 +446,9 @@ def main():
     qgs.initQgis()
 
     window = MapExplorer()
-    styleFile = './qss/Ubuntu.qss'
-    qssStyle = MapExplorer.readQss(styleFile)
-    window.setStyleSheet(qssStyle)
+    # styleFile = './qss/Ubuntu.qss'
+    # qssStyle = MapExplorer.readQss(styleFile)
+    # window.setStyleSheet(qssStyle)
     window.show()
 
     exit_code = qgs.exec_()
