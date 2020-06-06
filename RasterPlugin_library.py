@@ -51,7 +51,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         layout.addWidget(self.mapCanvas)
 
     def init_rasterType(self):
-        self.demRenderType.addItems(["Singleband gray", "Singleband pseudocolor", "Hillshade"])
+        self.demRenderType.addItems(["请选择渲染方法", "Singleband gray", "Singleband pseudocolor", "Hillshade"])
 
     def loadMap(self, fullpath):
         print(fullpath)
@@ -214,19 +214,20 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.status.setValue(2)
 
     def action_change_render_type(self, index):
+        self.status.setValue(0)
         currentIndex = self.demRenderType.currentIndex()
         self.single_band_gray_renderer_widget = QgsSingleBandGrayRendererWidget(self.layer)
         self.single_band_pseudo_color_renderer_widget = QgsSingleBandPseudoColorRendererWidget(self.layer)
         self.hillshade_renderer_widget = QgsHillshadeRendererWidget(self.layer)
-        if currentIndex == 0:
+        if currentIndex == 1:
             self.single_band_gray_renderer_widget.setVisible(True)
             self.single_band_pseudo_color_renderer_widget.setVisible(False)
             self.hillshade_renderer_widget.setVisible(False)
-        elif currentIndex == 1:
+        elif currentIndex == 2:
             self.single_band_gray_renderer_widget.setVisible(False)
             self.single_band_pseudo_color_renderer_widget.setVisible(True)
             self.hillshade_renderer_widget.setVisible(False)
-        elif currentIndex == 2:
+        elif currentIndex == 3:
             self.single_band_gray_renderer_widget.setVisible(False)
             self.single_band_pseudo_color_renderer_widget.setVisible(False)
             self.hillshade_renderer_widget.setVisible(True)
@@ -235,17 +236,23 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.status.setValue(0)
         self.status.setMaximum(1)
         currentIndex = self.demRenderType.currentIndex()
-        if currentIndex == 0:
+        if currentIndex == 1:
             self.render = self.single_band_gray_renderer_widget.renderer()
-        elif currentIndex == 1:
-            self.render = self.single_band_pseudo_color_renderer_widget.renderer()
+            self.layer.setRenderer(self.render)
+            self.layer.triggerRepaint()
+            self.status.setValue(1)
         elif currentIndex == 2:
+            self.render = self.single_band_pseudo_color_renderer_widget.renderer()
+            self.layer.setRenderer(self.render)
+            self.layer.triggerRepaint()
+            self.status.setValue(1)
+        elif currentIndex == 3:
             self.render = self.hillshade_renderer_widget.renderer()
+            self.layer.setRenderer(self.render)
+            self.layer.triggerRepaint()
+            self.status.setValue(1)
         else:
-            self.render = self.single_band_gray_renderer_widget.renderer()
-        self.layer.setRenderer(self.render)
-        self.layer.triggerRepaint()
-        self.status.setValue(1)
+            print('请选择渲染方式')
 
 def main():
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
