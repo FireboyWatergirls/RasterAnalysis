@@ -83,7 +83,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="k_means">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -239,7 +239,7 @@
      <string>聚类个数：</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
+   <widget class="QSpinBox" name="clusterNumber">
     <property name="geometry">
      <rect>
       <x>620</x>
@@ -449,7 +449,7 @@
      <x>0</x>
      <y>0</y>
      <width>802</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="file">

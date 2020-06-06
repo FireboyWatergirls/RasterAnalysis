@@ -122,7 +122,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.actionpan.triggered.connect(self.action_pan_triggered)
         self.actionfull_extent.triggered.connect(self.action_fullextent_triggered)
         self.actionsave.triggered.connect(self.action_save_triggered)
-        self.pushButton_3.clicked.connect(self.build_kmeans)
+        self.k_means.clicked.connect(self.build_kmeans)
 
     def init_mapcanvas(self):
         #实例化地图画布
@@ -251,7 +251,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def build_kmeans(self):
         # 没有什么循环，所以做了个假的进度条
-        print("当前值为：", self.spinBox.value())
+        print("当前值为：", self.clusterNumber.value())
         if self.input_raster_layer.count() == 0:
             print("无矢量图层数据")
             sys.exit(-1)
@@ -275,10 +275,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.new_shape = (self.tmpimg.shape[0] * self.tmpimg.shape[1], self.tmpimg.shape[2])
             x = self.tmpimg[:, :, :13].reshape(self.new_shape)
             print("1")
-            if self.spinBox.value() == 0:
+            if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
-            k_means = KMeans(n_clusters=self.spinBox.value())
+            k_means = KMeans(n_clusters=self.clusterNumber.value())
             k_means.fit(x)
             self.status.setValue(99)
             # for j in range(30, 78):
@@ -290,7 +290,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             band = self.img.GetRasterBand(1)
             self.tmpimg = band.ReadAsArray()
             x = self.tmpimg.reshape((-1, 1))
-            if self.spinBox.value() == 0:
+            if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
             self.status.setValue(84)
@@ -307,7 +307,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             self.tmpimg = band.ReadAsArray()
             self.status.setValue(77)
             x = self.tmpimg.reshape((-1, 1))
-            if self.spinBox.value() == 0:
+            if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
             k_means = KMeans(n_clusters=self.spinBox.value())
@@ -322,7 +322,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             band = self.img.GetRasterBand(3)
             self.tmpimg = band.ReadAsArray()
             x = self.tmpimg.reshape((-1, 1))
-            if self.spinBox.value() == 0:
+            if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
             k_means = KMeans(n_clusters=self.spinBox.value())
