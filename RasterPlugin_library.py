@@ -63,8 +63,9 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.actionpan.triggered.connect(self.action_pan_triggered)
         self.actionfull_extent.triggered.connect(self.action_fullextent_triggered)
         self.actionsave.triggered.connect(self.action_save_triggered)
-        self.toolButton.clicked.connect(self.open_gdp)
-        self.pushButton_2.clicked.connect(self.linear_regression)
+        self.openXcsv.clicked.connect(self.open_gdp)
+        self.openYcsv.clicked.connect(self.open_light)
+        self.correlation.clicked.connect(self.linear_regression)
 
     def open_gdp(self):
         fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '',
@@ -82,10 +83,13 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             for i in range(31):
                 self.gdp_dict[gdp_data_temp[i]['地区']] = gdp_data_temp[i][years]
 
-            light_data_temp = pd.read_csv(fullpath[1], encoding='gbk').to_dict(orient='index')
-            self.light_dict = {}
-            for i in range(31):
-                self.light_dict[light_data_temp[i]['地区']] = light_data_temp[i]['亮度']
+    def open_light(self):
+        fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '',
+                                                        '*.csv')
+        light_data_temp = pd.read_csv(fullpath[0], encoding='gbk').to_dict(orient='index')
+        self.light_dict = {}
+        for i in range(31):
+            self.light_dict[light_data_temp[i]['地区']] = light_data_temp[i]['亮度']
 
     def linear_regression(self):
         # self.light_dict和self.gdp_dict都是{城市名:值}

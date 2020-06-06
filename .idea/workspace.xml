@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b53e8385-b614-4dcc-a39d-d8b100692d07" name="Default Changelist" comment="">
+    <list default="true" id="228e69a6-dffe-438a-b331-dfd4826cd0bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1cYqxwXganaeTT4IlZxKU4v5sB5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -71,7 +77,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b53e8385-b614-4dcc-a39d-d8b100692d07" name="Default Changelist" comment="" />
+      <changelist id="228e69a6-dffe-438a-b331-dfd4826cd0bf" name="Default Changelist" comment="" />
       <created>1590716124448</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -81,6 +87,11 @@
       <workItem from="1590997374878" duration="2101000" />
       <workItem from="1591004142610" duration="237000" />
       <workItem from="1591004405532" duration="2822000" />
+      <workItem from="1591450343449" duration="698000" />
+      <workItem from="1591452259289" duration="177000" />
+      <workItem from="1591452500940" duration="654000" />
+      <workItem from="1591453444451" duration="1334000" />
+      <workItem from="1591455492242" duration="42000" />
     </task>
     <servers />
   </component>
@@ -101,6 +112,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RasterPlugin$RasterPlugin_library.coverage" NAME="RasterPlugin_library Coverage Results" MODIFIED="1591005669650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RasterPlugin$RasterPlugin_library.coverage" NAME="RasterPlugin_library Coverage Results" MODIFIED="1591455495289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RasterPlugin_correlation$RasterPlugin_library.coverage" NAME="RasterPlugin_library Coverage Results" MODIFIED="1591453571789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
