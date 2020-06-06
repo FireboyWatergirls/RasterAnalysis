@@ -26,7 +26,7 @@ import cv2
 ##1 栅格运算：添加计算器
 ##2 弹出窗口显示结果
 
-class ResultWindow(QMainWindow,resultView):
+'''class ResultWindow(QMainWindow,resultView):
     def __init__(self,pt):
         super(ResultWindow, self).__init__()
         self.setupUi(self)
@@ -114,7 +114,7 @@ class ResultWindow(QMainWindow,resultView):
     def show_lonlat(self, point):
         x = point.x()
         y = point.y()
-        self.statusbar.showMessage('经度:{x},纬度:{y}')
+        self.statusbar.showMessage('经度:{x},纬度:{y}')'''
 
 
 class MapExplorer(QMainWindow, Ui_MainWindow):
@@ -416,6 +416,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             combo_box_raster.setCurrentText(self.layer.name())
         else:
             combo_box_vector.setCurrentText(self.layer.name())
+
     def build_kmeans(self):
         # 没有什么循环，所以做了个假的进度条
         print("当前值为：", self.clusterNumber.value())
@@ -426,18 +427,10 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         if self.img is None:
             print("数据加载失败")
             sys.exit(-1)
-        self.status.setValue(0)
+        self.progressBar.setValue(0)
         print(self.img.RasterYSize)
-        self.status.setMaximum(100)
+        self.progressBar.setMaximum(100)
 
-    def fill_combo_box_band(self):
-        self.rasterDataset = gdal.Open(self.layer.dataProvider().dataSourceUri())
-        # 添加可选择波段
-        self.comboBox_R.clear()
-        self.comboBox_NIR.clear()
-        for i in range(self.rasterDataset.RasterCount):
-            self.comboBox_R.addItem(str(i + 1))
-            self.comboBox_NIR.addItem(str(i + 1))
         print(self.selectClusterBand.currentText())
         if self.selectClusterBand.currentText() == "全波段":
             self.tmpimg = np.zeros((self.img.RasterYSize, self.img.RasterXSize, self.img.RasterCount),
@@ -445,7 +438,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             j = 0
             for b in range(self.tmpimg.shape[2]):
                 self.tmpimg[:, :, b] = self.img.GetRasterBand(b+1).ReadAsArray()
-                self.status.setValue(b)
+                self.progressBar.setValue(b)
                 j = b
             self.new_shape = (self.tmpimg.shape[0] * self.tmpimg.shape[1], self.tmpimg.shape[2])
             x = self.tmpimg[:, :, :13].reshape(self.new_shape)
@@ -455,7 +448,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
                 sys.exit(-1)
             k_means = KMeans(n_clusters=self.clusterNumber.value())
             k_means.fit(x)
-            self.status.setValue(99)
+            self.progressBar.setValue(99)
             # for j in range(30, 78):
             #     self.progressBar.setValue(j)
             #     j = j + 1
@@ -468,19 +461,19 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
-            self.status.setValue(84)
+            self.progressBar.setValue(84)
             k_means = KMeans(n_clusters=self.spinBox.value())
             k_means.fit(x)
             # for j in range(30, 78):
             #     self.progressBar.setValue(j)
             #     j = j + 1
             x_cluster = k_means.labels_
-            self.status.setValue(96)
+            self.progressBar.setValue(96)
             x_cluster = x_cluster.reshape(self.tmpimg.shape)
         elif self.selectClusterBand.currentText() == "波段2":
             band = self.img.GetRasterBand(2)
             self.tmpimg = band.ReadAsArray()
-            self.status.setValue(77)
+            self.progressBar.setValue(77)
             x = self.tmpimg.reshape((-1, 1))
             if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
@@ -491,7 +484,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             #     self.progressBar.setValue(j)
             #     j = j + 1
             x_cluster = k_means.labels_
-            self.status.setValue(93)
+            self.progressBar.setValue(93)
             x_cluster = x_cluster.reshape(self.tmpimg.shape)
         else:
             band = self.img.GetRasterBand(3)
@@ -500,13 +493,21 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             if self.clusterNumber.value() == 0:
                 print("聚类数不可为0")
                 sys.exit(-1)
-            k_means = KMeans(n_clusters=self.spinBox.value())
+            k_means = KMeans(n_clusters=self.clusterNumber.value())
             k_means.fit(x)
             # for j in range(30, 78):
             #     self.progressBar.setValue(j)
             #     j = j + 1
             x_cluster = k_means.labels_
             x_cluster = x_cluster.reshape(self.tmpimg.shape)
+
+        print("保存")
+        cv2.imwrite('generated.tif', x_cluster)
+        # self.progressBar.setValue(99)
+        self.resultwindow = ResultWindow('generated.tif')
+        self.progressBar.setValue(100)
+        # resultwindow.fullpath=outFilePath
+        self.resultwindow.show()
 
     def action_change_layer(self,flag):
         vector_layer=self.find_layer(self.input_vector_layer.currentText())
@@ -532,6 +533,16 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
         return None
 
+    def fill_combo_box_band(self):
+        if self.layer.name() != 'wms layer':
+            self.rasterDataset = gdal.Open(self.layer.dataProvider().dataSourceUri())
+            # 添加可选择波段
+            self.comboBox_R.clear()
+            self.comboBox_NIR.clear()
+            for i in range(self.rasterDataset.RasterCount):
+                self.comboBox_R.addItem(str(i + 1))
+                self.comboBox_NIR.addItem(str(i + 1))
+
     def open_WFS_dialog(self):
         self.WFSdialog = wfsLayer()
         self.WFSdialog.show()
@@ -539,11 +550,12 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def add_WFS_layer(self,wfsLayer):
         self.progressBar.setValue(0)
+        self.progressBar.setMaximum(100)
         self.layer=wfsLayer
         QgsProject.instance().addMapLayer(self.layer)
         layers = QgsProject.instance().mapLayers()
         layerList = []
-        for i in range(1, 20):
+        for i in range(1, 60):
             self.progressBar.setValue(i)
         for layer in layers.values():
             layerList.append(layer)
@@ -565,6 +577,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def add_WMS_layer(self,wmsLayer):
         self.progressBar.setValue(0)
+        self.progressBar.setMaximum(100)
         self.layer=wmsLayer
         QgsProject.instance().addMapLayer(self.layer)
         layers = QgsProject.instance().mapLayers()
@@ -585,6 +598,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def RasterData(self):
         self.progressBar.setValue(0)
+        self.progressBar.setMaximum(100)
         layer = self.find_layer(self.input_raster_layer.currentText())
         wave=int(self.comboBox_R.currentText())
         out = raster_stat_unique_count(layer,wave)
