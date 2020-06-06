@@ -14,17 +14,16 @@ def load_raster_layer(file_path):
     return QgsRasterLayer(file_path, '')
 
 
-def raster_stat_unique_count(raster_layer):
+def raster_stat_unique_count(raster_layer,wave):
     """
     :param QgsRasterLayer raster_layer:
     :return:
     """
-    a=1
     dp = raster_layer.dataProvider()
     x_width, y_height = raster_layer.width(), raster_layer.height()
     box = dp.extent()
 
-    block = dp.block(1, box, x_width, y_height, None)  # type:QgsRasterBlock
+    block = dp.block(wave, box, x_width, y_height, None)  # type:QgsRasterBlock
 
     print(x_width, y_height, box)
 
@@ -53,11 +52,13 @@ def histogram_draw(value,count):
     ave = sum1/sum2
     maxcount=max(count)
     text1 = "mean=" + str(round(ave, 2))
+    text4 = "sum=" + str(sum1)
     text2 = "min=" + str(value[0])
     text3 = "max=" + str(value[-1])
-    plt.text(0, maxcount, text1)
-    plt.text(0, maxcount/8*7, text2)
-    plt.text(0, maxcount/8*6, text3)
+    plt.text(0, maxcount/10*9, text4)
+    plt.text(0, maxcount/10*8, text1)
+    plt.text(0, maxcount/10*7, text2)
+    plt.text(0, maxcount / 10 * 6, text3)
     plt.bar(value, count, label="frequency")
     plt.legend()
     plt.show()
@@ -68,8 +69,8 @@ def histogram_draw(value,count):
 # layer = load_raster_layer(r1_path)
 
 
-def Rasterdata(layer):
-    out = raster_stat_unique_count(layer)
+def Rasterdata(layer,wave):
+    out = raster_stat_unique_count(layer,wave)
     print()
     value=[]
     count=[]

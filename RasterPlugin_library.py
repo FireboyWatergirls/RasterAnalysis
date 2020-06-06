@@ -391,7 +391,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
     def RasterData(self):
         self.progressBar.setValue(0)
         layer = self.find_layer(self.input_raster_layer.currentText())
-        out = raster_stat_unique_count(layer)
+        wave=int(self.comboBox_R.currentText())
+        out = raster_stat_unique_count(layer,wave)
         print()
         value = []
         count = []
