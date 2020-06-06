@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ab8c4fa-889b-4498-bda8-9a7695c2e978" name="Default Changelist" comment="">
+    <list default="true" id="b53e8385-b614-4dcc-a39d-d8b100692d07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/ndvi.tif" beforeDir="false" afterPath="$PROJECT_DIR$/ndvi.tif" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
+>>>>>>> rasterData
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

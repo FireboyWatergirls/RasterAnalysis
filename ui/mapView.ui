@@ -324,7 +324,7 @@
      <string>计算相关系数</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ImageData">
     <property name="geometry">
      <rect>
       <x>562</x>
@@ -334,7 +334,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>计算区域亮度</string>
+     <string>影像数据</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
@@ -442,7 +442,7 @@
      <x>0</x>
      <y>0</y>
      <width>1012</width>
-     <height>18</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="file">
