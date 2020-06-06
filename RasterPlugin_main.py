@@ -237,6 +237,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
 
     def loadMap(self, fullpath):
+        self.progressBar.setValue(0)
+        self.progressBar.setMaximum(20)
         print(fullpath)
         info=QFileInfo(fullpath)
         basename=info.baseName()
@@ -258,6 +260,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         QgsProject.instance().addMapLayer(self.layer)
         layers=QgsProject.instance().mapLayers()
         layerList=[]
+        for i in range(1,20):
+            self.progressBar.setValue(i)
         for layer in layers.values():
             layerList.append(layer)
         self.mapCanvas.setLayers(layerList)
@@ -265,6 +269,8 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.mapCanvas.setExtent(self.layer.extent())
         self.mapCanvas.refresh()
         self.fill_combo_box_with_layers(self.input_vector_layer,self.input_raster_layer)
+        for i in range(11,21):
+            self.progressBar.setValue(i)
         #curLayer = self.input_raster_layer.currentText()
         #layer = QgsProject.instance().mapLayersByName(curLayer)[0]
 
