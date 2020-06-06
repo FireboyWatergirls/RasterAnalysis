@@ -40,6 +40,7 @@ def raster_stat_unique_count(raster_layer,wave):
                 continue
 
             ret[value] = ret[value] + 1
+    a=0
     return ret
 
 def histogram_draw(value,count):
@@ -51,14 +52,15 @@ def histogram_draw(value,count):
 
     ave = sum1/sum2
     maxcount=max(count)
+    maxvalue=max(value)*3/4
     text1 = "mean=" + str(round(ave, 2))
     text4 = "sum=" + str(sum1)
     text2 = "min=" + str(value[0])
     text3 = "max=" + str(value[-1])
-    plt.text(0, maxcount/10*9, text4)
-    plt.text(0, maxcount/10*8, text1)
-    plt.text(0, maxcount/10*7, text2)
-    plt.text(0, maxcount / 10 * 6, text3)
+    plt.text(maxvalue, maxcount/10*9, text4)
+    plt.text(maxvalue, maxcount/10*8, text1)
+    plt.text(maxvalue, maxcount/10*7, text2)
+    plt.text(maxvalue, maxcount / 10 * 6, text3)
     plt.bar(value, count, label="frequency")
     plt.legend()
     plt.show()
@@ -75,8 +77,8 @@ def Rasterdata(layer,wave):
     value=[]
     count=[]
     for k in sorted(out.keys()):
-        # print("value = ", k, '\t, count = ', out[k])
-        if(k<1000):
+        print("value = ", k, '\t, count = ', out[k])
+        if(k>0):
             value.append(k)
             count.append(out[k])
     histogram_draw(value, count)
