@@ -45,6 +45,16 @@ import numpy
 ##1 栅格运算：添加计算器
 ##2 弹出窗口显示结果
 
+# 主题的类
+class StyleFile:
+    def __init__(self):
+        pass
+
+    # @staticmethod
+    def readQSS(style):
+        with open(style, 'r') as f:
+            return f.read()
+
 class MapExplorer(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
@@ -78,6 +88,13 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         self.openXcsv.clicked.connect(self.open_gdp)
         self.openYcsv.clicked.connect(self.open_light)
         self.correlation.clicked.connect(self.linear_regression)
+        self.actionAMOLED.triggered.connect(self.action_change_style_amoled)
+        self.actionAqua.triggered.connect(self.action_change_style_aqua)
+        self.actionConsoleStyle.triggered.connect(self.action_change_style_console)
+        self.actionElegantDark.triggered.connect(self.action_change_style_elegant)
+        self.actionManjaroMix.triggered.connect(self.action_change_style_mix)
+        self.actionMaterialDark.triggered.connect(self.action_change_style_dark)
+        self.actionUbuntu.triggered.connect(self.action_change_style_ubuntu)
 
 
     def init_rasterType(self):
@@ -725,6 +742,42 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
         Y = reg.predict(np.reshape(X, (-1, 1)))
         self.plot_widget = PlotLinear()
         self.plot_widget.plot(x, y, X, Y)
+
+
+    def action_change_style_amoled(self):
+        style_file = 'qss/AMOLED.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_aqua(self):
+        style_file = 'qss/Aqua.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_console(self):
+        style_file = 'qss/ConsoleStyle.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_elegant(self):
+        style_file = 'qss/ElegantDark.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_mix(self):
+        style_file = 'qss/ManjaroMix.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_dark(self):
+        style_file = 'qss/MaterialDark.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
+
+    def action_change_style_ubuntu(self):
+        style_file = 'qss/Ubuntu.qss'
+        self.style = StyleFile.readQSS(style_file)
+        self.setStyleSheet(self.style)
 
 
 def main():
