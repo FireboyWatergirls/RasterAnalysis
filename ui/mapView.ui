@@ -443,8 +443,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>700</width>
-     <height>23</height>
+     <width>1012</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="file">
@@ -465,8 +465,21 @@
     <addaction name="actionpan"/>
     <addaction name="actiondisplay_layers"/>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>主题</string>
+    </property>
+    <addaction name="actionAMOLED"/>
+    <addaction name="actionAqua"/>
+    <addaction name="actionConsoleStyle"/>
+    <addaction name="actionElegantDark"/>
+    <addaction name="actionManjaroMix"/>
+    <addaction name="actionMaterialDark"/>
+    <addaction name="actionUbuntu"/>
+   </widget>
    <addaction name="file"/>
    <addaction name="view"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionopen_file">
@@ -517,6 +530,41 @@
   <action name="actiondisplay_layers">
    <property name="text">
     <string>display layers</string>
+   </property>
+  </action>
+  <action name="actionAMOLED">
+   <property name="text">
+    <string>AMOLED</string>
+   </property>
+  </action>
+  <action name="actionAqua">
+   <property name="text">
+    <string>Aqua</string>
+   </property>
+  </action>
+  <action name="actionConsoleStyle">
+   <property name="text">
+    <string>ConsoleStyle</string>
+   </property>
+  </action>
+  <action name="actionElegantDark">
+   <property name="text">
+    <string>ElegantDark</string>
+   </property>
+  </action>
+  <action name="actionManjaroMix">
+   <property name="text">
+    <string>ManjaroMix</string>
+   </property>
+  </action>
+  <action name="actionMaterialDark">
+   <property name="text">
+    <string>MaterialDark</string>
+   </property>
+  </action>
+  <action name="actionUbuntu">
+   <property name="text">
+    <string>Ubuntu</string>
    </property>
   </action>
  </widget>
