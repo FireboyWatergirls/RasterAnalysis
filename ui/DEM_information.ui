@@ -6,197 +6,126 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
-    <height>398</height>
+    <width>498</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>DEM 基本信息</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>41</width>
-     <height>9</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>名称</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>130</y>
-     <width>41</width>
-     <height>9</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>高度</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>41</width>
-     <height>9</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>宽度</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>41</width>
-     <height>9</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>范围</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textName">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>40</y>
-     <width>321</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textExtent">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>80</y>
-     <width>321</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textWidth">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>120</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textHeight">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>120</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>170</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>高程最大值</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textMax">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>170</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textMin">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>170</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>170</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>高程最大值</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>220</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>栅格类型</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>270</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>波段个数</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textType">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>220</y>
-     <width>321</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="textBandNum">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>270</y>
-     <width>321</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>名称</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textName"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>范围</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textExtent"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>宽度</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textWidth"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>高度</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textHeight"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>高程最大值</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textMax"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>高程最大值</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textMin"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>栅格类型</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textType"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>波段个数</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBandNum"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
