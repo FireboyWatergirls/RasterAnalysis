@@ -77,7 +77,7 @@ class Ui_XYZ_Dialog(object):
 
     def retranslateUi(self, XYZ_Dialog):
         _translate = QtCore.QCoreApplication.translate
-        XYZ_Dialog.setWindowTitle(_translate("XYZ_Dialog", "Dialog"))
+        XYZ_Dialog.setWindowTitle(_translate("XYZ_Dialog", "WMS参数"))
         self.label.setText(_translate("XYZ_Dialog", "URI:"))
         self.URI.setText(_translate("XYZ_Dialog", "www.google.cn/maps/vt/"))
         self.label_3.setText(_translate("XYZ_Dialog", "lyrs:"))

@@ -1,6 +1,6 @@
 from collections import defaultdict
 from qgis.core import *
-from RasterPlugin_main import *
+from main import *
 import matplotlib
 matplotlib.use("Qt5Agg")  # 声明使用QT5
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas

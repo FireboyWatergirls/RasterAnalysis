@@ -68,7 +68,7 @@ class Ui_InformationDialog(object):
 
     def retranslateUi(self, InformationDialog):
         _translate = QtCore.QCoreApplication.translate
-        InformationDialog.setWindowTitle(_translate("InformationDialog", "Dialog"))
+        InformationDialog.setWindowTitle(_translate("InformationDialog", "DEM基本信息"))
         self.label_6.setText(_translate("InformationDialog", "高程最小值"))
         self.label_3.setText(_translate("InformationDialog", "宽度"))
         self.label_4.setText(_translate("InformationDialog", "高度"))

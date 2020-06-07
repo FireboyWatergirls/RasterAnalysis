@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'resultView2-new.ui'
+# Form implementation generated from reading ui file 'resultView2.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #
@@ -9,7 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QFileInfo
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -78,4 +77,4 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "处理结果"))

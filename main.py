@@ -12,12 +12,13 @@ from ui.mapView import Ui_MainWindow
 from ui.resultView2 import Ui_MainWindow as resultView
 #from ui.resultView import Ui_Dialog
 from osgeo import gdal
-from RasterPlugin_webLayer import *
-from RasterPlugin_showNDVI import *
-from RasterPlugin_RasterData import *
-from RasterPlugin_showNDVI import *
-from RasterPlugin_webLayer import *
-from RasterPlugin_correlation import *
+from RasterAnalysis_DEM_Information import *
+from RasterAnalysis_webLayer import *
+from RasterAnalysis_showNDVI import *
+from RasterAnalysis_DEM_Information import *
+from RasterAnalysis_correlation import *
+from RasterAnalysis_RasterData import *
+
 import os, sys,struct
 import numpy as np
 from osgeo import gdal, gdal_array
@@ -25,7 +26,11 @@ from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 import matplotlib.image as mpimg
 import cv2
-from DEM_Information import DEMInformation
+from RasterAnalysis_DEM_Information import DEMInformation
+from RasterAnalysis_webLayer import *
+from RasterAnalysis_showNDVI import *
+from RasterAnalysis_correlation import *
+from RasterAnalysis_RasterData import *
 from ui.mapView import Ui_MainWindow
 from ui.resultView2 import Ui_MainWindow as resultView
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog,QMessageBox

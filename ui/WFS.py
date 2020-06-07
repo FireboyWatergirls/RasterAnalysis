@@ -72,7 +72,7 @@ class Ui_WFS_Dialog(object):
 
     def retranslateUi(self, WFS_Dialog):
         _translate = QtCore.QCoreApplication.translate
-        WFS_Dialog.setWindowTitle(_translate("WFS_Dialog", "Dialog"))
+        WFS_Dialog.setWindowTitle(_translate("WFS_Dialog", "WFS参数"))
         self.label.setText(_translate("WFS_Dialog", "URI:"))
         self.URI.setText(_translate("WFS_Dialog", "http://localhost:8080/geoserver/nyc_roads/ows?"))
         self.label_3.setText(_translate("WFS_Dialog", "service:"))

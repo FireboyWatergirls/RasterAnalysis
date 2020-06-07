@@ -8,7 +8,7 @@ from ui.mapView import Ui_MainWindow
 from ui.resultView2 import Ui_MainWindow as resultView
 #from ui.resultView import Ui_Dialog
 from osgeo import gdal
-from RasterPlugin_webLayer import *
+from RasterAnalysis_webLayer import *
 
 #w问题：如果有多个图层，是只显示选项框里的图层还是全部显示？
 ##扩展部分
