@@ -6,143 +6,126 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>620</height>
+    <width>498</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>DEM 基本信息</string>
   </property>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>20</y>
-     <width>326</width>
-     <height>448</height>
-    </rect>
-   </property>
-   <layout class="QFormLayout" name="formLayout_2">
-    <property name="horizontalSpacing">
-     <number>10</number>
-    </property>
-    <property name="verticalSpacing">
-     <number>20</number>
-    </property>
-    <property name="topMargin">
-     <number>10</number>
-    </property>
-    <property name="bottomMargin">
-     <number>10</number>
-    </property>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>栅格类型</string>
-      </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>名称</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textName"/>
+       </item>
+      </layout>
      </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QTextBrowser" name="textType"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>波段个数</string>
-      </property>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>范围</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textExtent"/>
+       </item>
+      </layout>
      </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QTextBrowser" name="textBandNum"/>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <layout class="QFormLayout" name="formLayout">
-      <property name="horizontalSpacing">
-       <number>10</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>20</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>名称</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QTextBrowser" name="textName"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>范围</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextBrowser" name="textExtent"/>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0" colspan="2">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <property name="horizontalSpacing">
-       <number>10</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>20</number>
-      </property>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>高程最大值</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QTextBrowser" name="textMax"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>宽度</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>高程最大值</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QTextBrowser" name="textHeight"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextBrowser" name="textWidth"/>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>高度</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QTextBrowser" name="textMin"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>宽度</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textWidth"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>高度</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textHeight"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>高程最大值</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textMax"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>高程最大值</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textMin"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>栅格类型</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textType"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>波段个数</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBandNum"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

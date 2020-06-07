@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52d23155-5ee7-4476-9eb1-2050e8cbc8f1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/DEM_information.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/DEM_information.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/WFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/WFS.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/WFS.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/XYZTile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/XYZTile.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/XYZTile.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +27,10 @@
   </component>
   <component name="ProjectId" id="1cyymBkqh0Q3X3eEdu7Y1tXsi23" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../uis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../qgis2web-3.14.0" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -38,9 +52,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\Program Files\QGIS 3.10\bin\python-qgis-ltr.bat" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
