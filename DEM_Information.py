@@ -6,9 +6,9 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QDialog
 
 # from RasterPlugin_library import MapExplorer
-from ui.DEM_information import InformationDialog
+from ui.DEM_information import Ui_InformationDialog
 
-class DEMInformation(QDialog, InformationDialog):
+class DEMInformation(QDialog, Ui_InformationDialog):
     def __init__(self):
         super(DEMInformation, self).__init__()
         self.setupUi(self)

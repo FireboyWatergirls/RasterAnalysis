@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="9cad8e63-dc46-4699-9282-1022274de1f9" name="Default Changelist" comment="">
+    <list default="true" id="1fae1712-390d-4635-bbaf-bdbc5bf41fc3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RasterPlugin_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_main.py" afterDir="false" />
-=======
-    <list default="true" id="52d23155-5ee7-4476-9eb1-2050e8cbc8f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/resultView2.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/untitled.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/untitled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/untitled.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/untitled.ui" afterDir="false" />
->>>>>>> uidesign
+      <change beforePath="$PROJECT_DIR$/DEM_Information.py" beforeDir="false" afterPath="$PROJECT_DIR$/DEM_Information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/DEM_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/DEM_information.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/untitled.ui" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,18 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-<<<<<<< HEAD
-  <component name="ProjectId" id="1cxLhFZrTILsvo3nlmZ57Qu0Ivt" />
+  <component name="ProjectId" id="1czXqKE7Wx0q3T1lL4xuxrboJnk" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/RasterPlugin_main.py" />
-=======
-  <component name="ProjectId" id="1cyymBkqh0Q3X3eEdu7Y1tXsi23" />
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../qgis2web-3.14.0" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
->>>>>>> uidesign
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -50,11 +35,7 @@
     </option>
   </component>
   <component name="RunManager">
-<<<<<<< HEAD
     <configuration name="RasterPlugin_main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-=======
-    <configuration name="RasterPlugin_library" type="PythonConfigurationType" factoryName="Python" temporary="true">
->>>>>>> uidesign
       <module name="RasterPlugin" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -75,32 +56,17 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.RasterPlugin_library" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="9cad8e63-dc46-4699-9282-1022274de1f9" name="Default Changelist" comment="" />
-      <created>1591465415094</created>
+      <changelist id="1fae1712-390d-4635-bbaf-bdbc5bf41fc3" name="Default Changelist" comment="" />
+      <created>1591532586833</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1591465415094</updated>
-=======
-      <changelist id="52d23155-5ee7-4476-9eb1-2050e8cbc8f1" name="Default Changelist" comment="" />
-      <created>1591457024376</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1591457024376</updated>
-      <workItem from="1591457030574" duration="684000" />
-      <workItem from="1591515290895" duration="40000" />
->>>>>>> uidesign
+      <updated>1591532586833</updated>
     </task>
     <servers />
   </component>
@@ -115,10 +81,4 @@
       </map>
     </option>
   </component>
-<<<<<<< HEAD
-=======
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RasterPlugin$RasterPlugin_library.coverage" NAME="RasterPlugin_library Coverage Results" MODIFIED="1591457201357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
->>>>>>> uidesign
 </project>
