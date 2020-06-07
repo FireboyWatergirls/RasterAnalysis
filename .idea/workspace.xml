@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52d23155-5ee7-4476-9eb1-2050e8cbc8f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RasterPlugin_library.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_library.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/DEM_information.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/DEM_information.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/WFS.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/WFS.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/WFS.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/XYZTile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/XYZTile.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/XYZTile.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/untitled.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/untitled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/untitled.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/untitled.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

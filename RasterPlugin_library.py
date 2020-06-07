@@ -7,7 +7,6 @@ from qgis.gui import *
 from PyQt5.QtCore import Qt, QFileInfo
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QFileDialog, QGridLayout, QWidget, QLabel,QDialog
 from ui.mapView import Ui_MainWindow
-from ui.untitled import Ui_InformationDialog
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -17,12 +16,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import numpy as np
-
-class Dem(QDialog, Ui_InformationDialog):
-    def __init__(self):
-        super(Dem, self).__init__()
-        self.setupUi(self)
-
 
 class PlotLinear(QMainWindow):
     def __init__(self):
@@ -251,8 +244,6 @@ def main():
     window = MapExplorer()
     window.show()
 
-    dem = Dem()
-    dem.show()
     exit_code = qgs.exec_()
     #退出QGIS
     qgs.exitQgis()
