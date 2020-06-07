@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fae1712-390d-4635-bbaf-bdbc5bf41fc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RasterPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RasterPlugin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DEM_Information.py" beforeDir="false" afterPath="$PROJECT_DIR$/DEM_Information.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/DEM_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/DEM_information.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/DEM_information.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/untitled.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RasterPlugin_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/RasterPlugin_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mapView.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mapView.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/resultView2.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/resultView2.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

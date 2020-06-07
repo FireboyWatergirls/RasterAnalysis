@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>605</height>
+    <height>697</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -443,8 +443,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1012</width>
-     <height>26</height>
+     <width>700</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="file">
@@ -484,37 +484,37 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionopen_file">
    <property name="text">
-    <string>open file</string>
+    <string>打开</string>
    </property>
   </action>
   <action name="actionsave">
    <property name="text">
-    <string>save</string>
+    <string>保存</string>
    </property>
   </action>
   <action name="actionsave_as">
    <property name="text">
-    <string>save as</string>
+    <string>另存为</string>
    </property>
   </action>
   <action name="actionzoom_in">
    <property name="text">
-    <string>zoom in</string>
+    <string>放大</string>
    </property>
   </action>
   <action name="actionzoom_out">
    <property name="text">
-    <string>zoom out</string>
+    <string>缩小</string>
    </property>
   </action>
   <action name="actionfull_extent">
    <property name="text">
-    <string>full extent</string>
+    <string>全图</string>
    </property>
   </action>
   <action name="actionpan">
    <property name="text">
-    <string>pan</string>
+    <string>平移</string>
    </property>
   </action>
   <action name="actionj">
@@ -529,7 +529,7 @@
   </action>
   <action name="actiondisplay_layers">
    <property name="text">
-    <string>display layers</string>
+    <string>全部图层</string>
    </property>
   </action>
   <action name="actionAMOLED">

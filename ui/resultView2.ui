@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>783</width>
+    <width>805</width>
     <height>420</height>
    </rect>
   </property>
@@ -14,92 +14,79 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="mapWidget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>731</width>
-      <height>391</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="actionzoom_in">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>10</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../icon/zoom-in.png</normaloff>../icon/zoom-in.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="actionzoom_out">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>30</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../icon/zoom-out.png</normaloff>../icon/zoom-out.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="actionpan">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>50</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../icon/pan.png</normaloff>../icon/pan.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="actionfull_extent">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>70</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../icon/full_extend.png</normaloff>../icon/full_extend.png</iconset>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QWidget" name="mapWidget" native="true">
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>10</y>
+         <width>34</width>
+         <height>116</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="actionzoom_in">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../icon/zoom-in.png</normaloff>../icon/zoom-in.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="actionzoom_out">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../icon/zoom-out.png</normaloff>../icon/zoom-out.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="actionpan">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../icon/pan.png</normaloff>../icon/pan.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="actionfull_extent">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../icon/full_extend.png</normaloff>../icon/full_extend.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>783</width>
-     <height>18</height>
+     <width>805</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>
