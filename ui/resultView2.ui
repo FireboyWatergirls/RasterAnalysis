@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
-    <height>420</height>
+    <width>356</width>
+    <height>327</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,20 +16,15 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QWidget" name="mapWidget" native="true">
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>740</x>
-         <y>10</y>
-         <width>34</width>
-         <height>116</height>
-        </rect>
-       </property>
+     <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="5,0">
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QWidget" name="mapWidget" native="true"/>
+      </item>
+      <item row="0" column="1">
        <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
         <item>
          <widget class="QPushButton" name="actionzoom_in">
           <property name="text">
@@ -74,9 +69,16 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
        </layout>
-      </widget>
-     </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -85,7 +87,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>805</width>
+     <width>356</width>
      <height>23</height>
     </rect>
    </property>
