@@ -702,10 +702,9 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
 
 
     def open_gdp(self):
-        fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '',
-                                                       '*.csv')
-        gdp_data_temp = pd.read_csv(fullpath[0], encoding='gbk').to_dict(orient='index')
-        print(type(fullpath[0]))
+        fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '', '*.csv')
+        gdp_data_temp = pd.read_csv(fullpath[0], encoding='gbk').iloc[:, :2].dropna(axis=0, how='any')
+        gdp_data_temp = gdp_data_temp.to_dict(orient='index')
         years = None
         for i in gdp_data_temp[0].keys():
             if i != '地区' and 'Unnamed' not in i:
@@ -715,17 +714,17 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             print('数据有问题！')
         else:
             self.gdp_dict = {}
-            for i in range(17):
+            for i in range(len(gdp_data_temp)):
                 self.gdp_dict[gdp_data_temp[i]['地区']] = gdp_data_temp[i][years]
         self.lineEditX.setText(fullpath[0])
 
 
     def open_light(self):
-        fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '',
-                                                        '*.csv')
-        light_data_temp = pd.read_csv(fullpath[0], encoding='gbk').to_dict(orient='index')
+        fullpath, format = QFileDialog.getOpenFileNames(self, '打开数据', '', '*.csv')
+        light_data_temp = pd.read_csv(fullpath[0], encoding='gbk').iloc[:, :2].dropna(axis=0, how='any')
+        light_data_temp = light_data_temp.to_dict(orient='index')
         self.light_dict = {}
-        for i in range(17):
+        for i in range(len(light_data_temp)):
             self.light_dict[light_data_temp[i]['地区']] = light_data_temp[i]['亮度']
         self.lineEditY.setText(fullpath[0])
 
