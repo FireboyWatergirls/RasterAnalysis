@@ -715,7 +715,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
             print('数据有问题！')
         else:
             self.gdp_dict = {}
-            for i in range(31):
+            for i in range(17):
                 self.gdp_dict[gdp_data_temp[i]['地区']] = gdp_data_temp[i][years]
         self.lineEditX.setText(fullpath[0])
 
@@ -725,7 +725,7 @@ class MapExplorer(QMainWindow, Ui_MainWindow):
                                                         '*.csv')
         light_data_temp = pd.read_csv(fullpath[0], encoding='gbk').to_dict(orient='index')
         self.light_dict = {}
-        for i in range(31):
+        for i in range(17):
             self.light_dict[light_data_temp[i]['地区']] = light_data_temp[i]['亮度']
         self.lineEditY.setText(fullpath[0])
 

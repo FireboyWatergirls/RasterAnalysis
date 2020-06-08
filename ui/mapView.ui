@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MyPYQGIS</string>
+   <string>RasterAnalysis</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../icon/tupian.png</normaloff>../icon/tupian.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_12">

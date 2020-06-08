@@ -8,12 +8,17 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtCore import QFileInfo
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(824, 680)
+        r = QFileInfo(__file__).absolutePath()
+        root = r.replace('/ui', '')
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(root+"/icon/tupian.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -326,7 +331,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MyPYQGIS"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "RasterAnalysis"))
         self.label.setText(_translate("MainWindow", "影像图层"))
         self.label_2.setText(_translate("MainWindow", "矢量图层"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600; color:#000000;\">夜光遥感分析</span></p></body></html>"))
